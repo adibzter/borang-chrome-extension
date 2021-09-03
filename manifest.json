@@ -1,17 +1,18 @@
 {
   "name": "Borang",
-  "description": "Spam google form like a champ",
-  "version": "0.0.1",
+  "description": "Spam Google Form like a champ",
+  "version": "0.0.2",
   "manifest_version": 3,
-  "icons": { "128": "icon.png" },
+  "icons": { "128": "icon_128.png" },
   "action": {
     "default_icon": "icon.png",
-    "default_popup": "src/popup.html"
+    "default_popup": "popup/popup.html"
   },
   "content_scripts": [
     {
       "matches": ["https://docs.google.com/forms/*"],
-      "js": ["src/static/content.js"]
+      "js": ["content/content.js"],
+			"css": ["content/content.css"]
     }
   ]
 }
