@@ -15,7 +15,7 @@ if (submitButton) {
 }
 
 function injectScript() {
-  const submitUrl = 'https://desperate.skrin.xyz/submit';
+  const submitUrl = 'https://borang.skrin.xyz/submit';
   // const submitUrl = 'http://localhost:5000/submit';
   let script = document.querySelector('body > script');
   let clone = script.cloneNode(true);
