@@ -10,9 +10,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://docs.google.com/forms/*"],
+      "matches": [
+        "https://docs.google.com/forms/*",
+        "https://borang.skrin.xyz/submit"
+      ],
       "js": ["content/content.js"],
-			"css": ["content/content.css"]
+      "css": ["content/content.css"]
     }
   ]
 }
