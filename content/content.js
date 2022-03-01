@@ -10,7 +10,8 @@ const submitUrl = 'https://borang.skrin.xyz/submit';
 })();
 
 let submitButton = document.querySelector(
-  '.freebirdFormviewerViewNavigationSubmitButton'
+  // '.freebirdFormviewerViewNavigationSubmitButton'
+  '.uArJ5e.UQuaGc.Y5sE8d.VkkpIf.NqnGTe'
 );
 
 if (submitButton) {
@@ -61,14 +62,22 @@ function submitForm(formUrl, submitNumber) {
   form.submit();
 }
 
-// Post form locally
-if (location.href === submitUrl) {
+// Wait util
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// Spam form if current path is /submit
+(async function spamForm() {
+  if (location.href !== submitUrl) {
+    return;
+  }
+
   const formUrl = document.querySelector('#formUrl').value;
   const counter = +document.querySelector('#counter').value;
   const body = document.querySelector('#body').value;
 
   for (let i = 0; i < counter - 1; i++) {
-    console.log(i);
+    await wait(10);
+
     fetch(formUrl, {
       method: 'POST',
       headers: {
@@ -77,20 +86,4 @@ if (location.href === submitUrl) {
       body: body,
     });
   }
-
-  const message = document.createElement('p');
-  document.body.appendChild(message);
-  message.innerHTML = `
-	${counter} form(s) submitted but it might not reach the server yet. Wait for 1 minute before closing this tab.
-	<br><br>
-	Since you are using Borang Chrome extension, you can submit unlimited form in the same time. But if you send too many, your PC might freeze.
-	<br><br>
-	Do not forget to give this extension 5 stars on <a href="https://chrome.google.com/webstore/detail/borang/mokcmggiibmlpblkcdnblmajnplennol" target="_blank">Chrome Web Store</a>
-	<br><br>
-	This is an open-source project. Feel free to contribute and learn the code.
-	<br>
-	Server repo: <a href="https://github.com/ADIBzTER/borang">https://github.com/ADIBzTER/borang</a>
-	<br>
-	Chrome Extension repo: <a href="https://github.com/ADIBzTER/borang-chrome-extension">https://github.com/ADIBzTER/borang-chrome-extension</a>
-	`;
-}
+})();
