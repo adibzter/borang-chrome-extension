@@ -11,7 +11,8 @@ const submitUrl = 'https://borang.skrin.xyz/submit';
 
 let submitButton = document.querySelector(
   // '.freebirdFormviewerViewNavigationSubmitButton'
-  '.uArJ5e.UQuaGc.Y5sE8d.VkkpIf.NqnGTe'
+  // '.uArJ5e.UQuaGc.Y5sE8d.VkkpIf.NqnGTe'
+  '.uArJ5e.UQuaGc.Y5sE8d.VkkpIf'
 );
 
 if (submitButton) {

@@ -1,7 +1,7 @@
 {
   "name": "Borang",
   "description": "Spam Google Form like a champ",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "manifest_version": 3,
   "icons": { "128": "icon_128.png" },
   "action": {
@@ -12,7 +12,8 @@
     {
       "matches": [
         "https://docs.google.com/forms/*",
-        "https://borang.skrin.xyz/submit"
+        "https://borang.skrin.xyz/submit",
+				"http://localhost:5000/submit"
       ],
       "js": ["content/content.js"],
       "css": ["content/content.css"]
