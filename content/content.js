@@ -30,7 +30,7 @@ function injectScript() {
   form.method = 'POST';
   form.action = submitUrl;
   submitButton.onclick = async (e) => {
-    const counter = +prompt('How many time you want to submit this form?');
+    const counter = +prompt('How many times should the form be submitted?');
     if (!counter) {
       alert('Please enter a number');
       return;
