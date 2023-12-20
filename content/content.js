@@ -2,6 +2,10 @@ const submitUrl = 'https://borang.skrin.xyz/submit';
 // const submitUrl = 'http://localhost:5000/submit';
 
 (function injectDiv() {
+  if (location.pathname.startsWith('/_submit')) {
+    return;
+  }
+
   let div = document.createElement('div');
   div.id = 'borang-div';
   div.textContent = 'Borang Is Activated';
