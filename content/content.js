@@ -30,10 +30,12 @@ function injectScript() {
   let body = document.querySelector('body');
   body.appendChild(clone);
   const form = document.querySelector('form');
-  const formUrl = form.action;
-  form.method = 'POST';
-  form.action = submitUrl;
+
   submitButton.onclick = async (e) => {
+    const formUrl = form.action;
+    form.method = 'POST';
+    form.action = submitUrl;
+
     const counter = +prompt('How many times should the form be submitted?');
     if (!counter) {
       alert('Please enter a number');
