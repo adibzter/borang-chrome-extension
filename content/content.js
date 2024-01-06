@@ -14,26 +14,21 @@ const submitUrl = 'https://borang.skrin.xyz/submit';
 })();
 
 let submitButton = document.querySelector(
+  // these used to be the selectors for the submit button, keep here for reference
+  // maybe what can be done is to query button element with text 'Submit'
   // '.freebirdFormviewerViewNavigationSubmitButton'
   // '.uArJ5e.UQuaGc.Y5sE8d.VkkpIf.NqnGTe'
   '.uArJ5e.UQuaGc.Y5sE8d.VkkpIf'
 );
 
 if (submitButton) {
-  injectScript();
-}
-
-function injectScript() {
-  let script = document.querySelector('body > script');
-  let clone = script.cloneNode(true);
-  clone.setAttribute('type', 'text/javascript');
-  let body = document.querySelector('body');
-  body.appendChild(clone);
   const form = document.querySelector('form');
-  const formUrl = form.action;
-  form.method = 'POST';
-  form.action = submitUrl;
-  submitButton.onclick = async (e) => {
+
+  submitButton.onclick = () => {
+    const formUrl = form.action;
+    form.method = 'POST';
+    form.action = submitUrl;
+
     const counter = +prompt('How many times should the form be submitted?');
     if (!counter) {
       alert('Please enter a number');
@@ -66,29 +61,3 @@ function submitForm(formUrl, submitNumber) {
 
   form.submit();
 }
-
-// Wait util
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-// Spam form if current path is /submit
-(async function spamForm() {
-  if (location.href !== submitUrl) {
-    return;
-  }
-
-  const formUrl = document.querySelector('#formUrl').value;
-  const counter = +document.querySelector('#counter').value;
-  const body = document.querySelector('#body').value;
-
-  for (let i = 0; i < counter - 1; i++) {
-    await wait(10);
-
-    fetch(formUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: body,
-    });
-  }
-})();
